@@ -1,0 +1,133 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Editar Empleado</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form>
+            <div class="center">
+                <h:commandButton class="button" value="Guardar" actionListener="#{BeanEmpleado.Guardar()}"></h:commandButton>
+                <h:commandButton class="button" value="Deshacer cambios" actionListener="#{BeanEmpleado.Deshacer()}"></h:commandButton>
+                <h:commandButton class="button" value="Salir" actionListener="#{BeanEmpleado.Cancelar()}"></h:commandButton>
+            </div>
+            <div align="center" class="tablaMantenimiento">
+                <div class="tituloTabla">
+                    <h3>Empleado:</h3>
+                </div>
+
+                <h:outputText class="textoLabel" value="Cédula:"></h:outputText>
+                <h:inputText class="textoInput" value="#{BeanEmpleado.empleado.cedula}"></h:inputText>
+                <br></br>
+                <br></br>
+
+                <h:outputText class="textoLabel" value="Nombre:"></h:outputText>
+                <h:inputText class="textoInput" value="#{BeanEmpleado.empleado.nombre}"></h:inputText>
+                <br></br>
+                <br></br>
+
+                <h:outputText class="textoLabel" value="Teléfono:"></h:outputText>
+                <h:inputText class="textoInput" value="#{BeanEmpleado.empleado.telefono}"></h:inputText>
+                <br></br>
+                <br></br>
+
+                <h:outputText value="Tipo de Jornada:"></h:outputText>
+                <h:selectOneMenu value="#{BeanEmpleado.empleado.jornada}">
+                    <f:selectItems value="#{BeanEmpleado.listaJornadas}"/>
+                </h:selectOneMenu>
+                <br></br>
+                <br></br>
+
+                <h:outputText  value="Salario:"></h:outputText>
+                <h:inputText class="textoInput" value="#{BeanEmpleado.empleado.salario}"></h:inputText>
+                <br></br>
+                <br></br>
+
+                <h:outputText value="Activo:"></h:outputText>
+                <h:selectBooleanCheckbox value="#{BeanEmpleado.empleado.activo}"></h:selectBooleanCheckbox>
+                <br></br>
+                <br></br>
+
+            </div>
+            <br></br>
+            <!-- Lista Cobros -->
+            <div align="center" class="tablaMantenimiento">
+                <div align="center" class="tituloTabla">
+                    <h3>Deducciones:</h3>
+                   
+                </div>
+
+                <h:dataTable value="#{BeanEmpleado.listaDeducciones}" var="deduccion" class="dTableMantenimiento">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Detalle"></h:outputText>
+                        </f:facet>
+                        <h:inputText value="#{deduccion.detalle}"></h:inputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cantidad"></h:outputText>
+                        </f:facet>
+                        <h:inputText value="#{deduccion.cantidad}"></h:inputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Monto Fijo"></h:outputText>
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{deduccion.fijo}"></h:selectBooleanCheckbox>
+                    </h:column>
+
+                    <h:column>
+                        <h:commandLink value="Eliminar" actionListener="#{BeanEmpleado.EliminarDeduccion(deduccion)}" ></h:commandLink>
+                    </h:column>
+                </h:dataTable>
+
+                <h:commandButton class="button" value="Añadir nueva deducción" actionListener="#{BeanEmpleado.AnadirDeduccion()}"></h:commandButton>
+                <br></br>
+                <br></br>
+            </div>
+            <br></br>
+
+            <div align="center" class="tablaMantenimiento">
+                <!-- Lista Beneficios -->
+                <div class="tituloTabla">
+                    <h3>Beneficios:</h3>
+                </div>
+
+                <h:dataTable value="#{BeanEmpleado.listaBeneficios}" var="beneficio" class="dTableMantenimiento">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Detalle"></h:outputText>
+                        </f:facet>
+                        <h:inputText value="#{beneficio.detalle}"></h:inputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cantidad"></h:outputText>
+                        </f:facet>
+                        <h:inputText value="#{beneficio.cantidad}"></h:inputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Monto Fijo"></h:outputText>
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{beneficio.fijo}"></h:selectBooleanCheckbox>
+                    </h:column>
+
+                    <h:column>
+                        <h:commandLink value="Eliminar" actionListener="#{BeanEmpleado.EliminarBeneficio(beneficio)}" ></h:commandLink>
+                    </h:column>
+                </h:dataTable>
+
+                <h:commandButton class="button" value="Añadir nuevo beneficio" actionListener="#{BeanEmpleado.AnadirBeneficio()}"></h:commandButton>
+                <br></br>
+                <br></br>
+            </div>
+        </h:form>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Generar Planilla</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+       
+    </head>
+    <body>
+        <h:form>
+            <div align="center" >
+                <button class="button"><a href="#{request.contextPath}//faces//ListaPlanillas.xhtml">Cancelar</a></button>
+                <h:commandButton class="button" value="Generar Planilla" actionListener="#{BeanPlanilla.Generar()}"></h:commandButton>
+            </div>
+
+            <div align="center" class="tablaMantenimiento">
+
+                <div class="tituloTabla">
+                    <h3>Generar Planilla</h3>
+                </div>
+
+                <h:outputText value="Incluir cobro de CCSS:"></h:outputText>
+                <h:selectBooleanCheckbox value="#{BeanPlanilla.calccss}"></h:selectBooleanCheckbox>
+                <br></br>
+                <h:outputText value="Incluir Impuesto sobre la renta:"></h:outputText>
+                <h:selectBooleanCheckbox value="#{BeanPlanilla.calrenta}"></h:selectBooleanCheckbox>
+                <br></br>
+                <br></br>
+
+                <h:outputText value="Tipo de Planilla:"></h:outputText>
+                <h:selectOneMenu value="#{BeanPlanilla.tipo}" onchange="submit()">
+                    <f:selectItems value="#{BeanPlanilla.listaTipos}"/>
+                </h:selectOneMenu>
+                <br></br>
+                <br></br>
+                <h:outputText style="margin-left: 22px;" value="Fecha de Inicio:"></h:outputText>
+                <h:inputText value="#{BeanPlanilla.fechaInicio}" converterMessage="Por favor ingresar la fecha en un formato de día/mes/año">  
+                    <f:convertDateTime pattern="dd/MM/yyyy" />  
+                </h:inputText>
+                <br></br>
+                <br></br>
+                <h:outputText style="margin-left: 22px;" value="Fecha Final:"></h:outputText>
+                <h:inputText value="#{BeanPlanilla.fechaFinal}" converterMessage="Por favor ingresar la fecha en un formato de día/mes/año">  
+                    <f:convertDateTime pattern="dd/MM/yyyy" />  
+                </h:inputText>
+                <br></br>
+                <br></br>
+                <h:outputText style="margin-left: 22px;" value="Fecha de Pago:"></h:outputText>
+                <h:inputText value="#{BeanPlanilla.fechaPago}" converterMessage="Por favor ingresar la fecha en un formato de día/mes/año">  
+                    <f:convertDateTime pattern="dd/MM/yyyy" />  
+                </h:inputText>
+                <br></br>
+                <br></br>
+                <h:outputText value="Tipo de Jornada:"></h:outputText>
+                <h:selectOneMenu value="#{BeanPlanilla.jornada}" onchange="submit()">
+                    <f:selectItems value="#{BeanPlanilla.listaJornadas}"/>
+                </h:selectOneMenu>
+                <br></br>
+                <br></br>
+
+                <div class="LISTA">
+                    <h3>Lista de Empleados que se agregarán</h3>
+                </div>
+
+                <div align="center">
+                    <h:dataTable value="#{BeanPlanilla.listaEmpleados}" var="empleado" class="tabla">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cédula"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{empleado.cedula}"></h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{empleado.nombre}"></h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Teléfono"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{empleado.telefono}"></h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Salario"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{empleado.salario}"></h:outputText>
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </div>
+        </h:form>
+    </body>
+</html>

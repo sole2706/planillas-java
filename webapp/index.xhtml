@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<meta charset="UTF-8">
+</meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</meta>
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </link>
+
+    <link rel="stylesheet" href="css/index.css">
+    </link>
+    <link rel="shortcut icon" href="img/oie_transparent.png">
+    </link>
+
+    <title>Inicio de Sesión</title>
+</h:head>
+<h:body>
+    <div class="col-12 col-sm-7 col-md-12 col-lg-7 col-xl-7 container h-100 justify-content-center mt-x pb-5">
+        <div class="text-center fondo rounded  pb-2">
+
+            <div class="container-fluid h-100 d-flex justify-content-center">
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6 col-12">
+                        <img src="img/oie_transparent.png" class="rounded float-left img-fluid mt-2"></img>
+                    </div>
+                    <div class="vl rounded"></div>
+                    <!--Grid column-->
+                    <div class="col-md-6 col-12">
+                        <h:form class="mt-5">
+                            <div class="container-fluid">
+                                <h2 class="titulo">Inicio Sesión</h2>
+                                <div class="row">
+                                    <div class="col-sm letras ">
+                                        <h:outputLabel for="username" value="Correo Electronico" class="mr-2 ">
+                                        </h:outputLabel>
+                                        <br />
+                                        <h:inputText id="username" value="#{beanIngreso.nombre}" class=""
+                                            required="true" requiredMessage="Ingrese su nombre de usuario." />
+                                        <br />
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="row ">
+                                    <div class="col-sm letras">
+                                        <h:outputLabel for="contrasena" value="Contraseña" class="mr-2"></h:outputLabel>
+                                        <br />
+                                        <h:inputSecret id="contrasena" value="#{beanIngreso.clave}" class="mr-2"
+                                            required="true" requiredMessage="Ingrese su contraseña." />
+                                        <br />
+                                        <h:outputLabel for="contrasena" value="#{beanIngreso.mensaje}" class="mr-2"
+                                            style="color: red"></h:outputLabel>
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <h:commandButton id="submit-button" value="Ingresar"
+                                    actionListener="#{beanIngreso.Ingresar()}" class="enviar" />
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

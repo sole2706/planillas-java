@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      >
+
+
+    <h:head>
+        <title>Inicio Sesión</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+              rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
+              crossorigin="anonymous"/>
+
+    </h:head>
+    <h:body class="pagina_ingreso" >
+
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a align="center"  class="navbar-brand" href="#">Sistema de Planillas</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </div>
+        </nav>
+
+        <header class="bgimg">
+        </header>
+
+        <main>
+            <h:form>
+                <div align="center"  id="contenedor_ingreso">
+                    <h1>Inicio de Sesion</h1>
+                    <hr></hr>
+                    <h:outputText class="titulos" value="Id"></h:outputText>
+                    <br></br>
+                    <h:inputText class="credenciales" value="#{BeanPersona.idPersonaAutenticar}"></h:inputText>
+                    <br></br>
+                    <hr></hr>
+                    <h:outputText class="titulos" value="Contraseña"></h:outputText>
+                    <br></br>
+                    <h:inputSecret class="credenciales" value="#{BeanPersona.passwordPersonaAutenticar}"></h:inputSecret>
+                    <br></br>
+                    <h:outputText value="#{BeanPersona.mensajeError}" style="color: red;"></h:outputText>
+                    <br></br>
+                    <hr></hr>
+                    <h:commandButton value="Iniciar Sesión" actionListener="#{BeanPersona.autenticar()}"></h:commandButton>
+                    <br></br>
+                    <hr></hr>
+
+                </div>
+            </h:form>
+        </main>
+    </h:body>
+</html>

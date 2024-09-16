@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      import="java.util.LinkedList"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <div style="height: 100%" class="container">
+
+        <h:form>
+            <div class="center">
+                <h:commandButton class="button" value="Añadir Usuario" actionListener="#{BeanUsuarios.AnadirUsuario()}"></h:commandButton>
+            </div>
+
+            <div align="center" class="tablaMantenimiento">
+                <h:dataTable value="#{BeanUsuarios.listaUsuarios}" var="usuario" class="tabla">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre de Usuario"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{usuario.nombre}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Rol"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{usuario.idRol}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="✍"></h:outputText>
+                        </f:facet>
+                        <h:commandLink value="Editar" actionListener="#{BeanUsuarios.Editar(usuario, true)}" ></h:commandLink>
+                    </h:column>
+
+                </h:dataTable>
+
+                <h:outputText value="#{BeanUsuarios.mensaje}" style="color: red"></h:outputText>
+            </div>
+        </h:form>
+    </div>
+
+
+</html>

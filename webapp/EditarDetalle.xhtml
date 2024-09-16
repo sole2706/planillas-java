@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Editar Detalle de Planilla</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form>
+
+            <div align="center" class="tablaMantenimiento">
+                <div class="tituloTabla">
+                    <h3>Detalle de Planilla:</h3>
+                </div>
+
+
+
+                <h:outputText class="textoLabel" value="Número de planilla: #{BeanDetallePlanilla.detalle.idPlanilla}"></h:outputText>
+                <br></br>
+                <h:outputText class="textoLabel" value="Empleado: #{BeanDetallePlanilla.detalle.empleado}"></h:outputText>
+                <br></br>
+                <br></br>
+                <h:outputText class="textoLabel" value="Salario Bruto:"></h:outputText>
+                <h:inputText class="textoInput" value="#{BeanDetallePlanilla.detalle.salarioBruto}"></h:inputText>
+                <br></br>
+                <br></br>
+                <h:outputText class="textoLabel" value="Horas trabajadas:"></h:outputText>
+                <h:inputText class="textoInput" value="#{BeanDetallePlanilla.detalle.horasTrabajadas}"></h:inputText>
+                <br></br>
+                <br></br>
+                <h:outputText class="textoLabel" value="Horas extra:"></h:outputText>
+                <h:inputText class="textoInput" value="#{BeanDetallePlanilla.detalle.horasExtra}"></h:inputText>
+                <br></br>
+                <br></br>
+                <h:outputText class="textoLabel" value="Salario Neto: #{BeanDetallePlanilla.detalle.salarioNeto}"></h:outputText>
+                <br></br>
+                <h:commandButton class="button" value="Calcular Salario Neto" actionListener="#{BeanDetallePlanilla.CalcularSalario()}"></h:commandButton>
+                <br></br>
+                <br></br>
+                <div class="center">
+                    <h:commandButton class="button" value="Guardar" actionListener="#{BeanDetallePlanilla.Guardar()}"></h:commandButton>
+                    <h:commandButton class="button" value="Deshacer cambios" actionListener="#{BeanDetallePlanilla.Deshacer()}"></h:commandButton>
+                    <h:commandButton class="button" value="Salir" actionListener="#{BeanDetallePlanilla.Cancelar()}"></h:commandButton>
+                </div>
+            </div>
+            <br></br>
+      
+
+            <div align="center" class="tablaMantenimiento">
+                <!-- Lista Beneficios -->
+                <div class="tituloTabla">
+                    <h3>Beneficios:</h3>
+                </div>
+
+                <h:dataTable value="#{BeanDetallePlanilla.listaBonus}" var="bonus" class="dTableMantenimiento">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Detalle"></h:outputText>
+                        </f:facet>
+                        <h:inputText value="#{bonus.detalle}"></h:inputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Total"></h:outputText>
+                        </f:facet>
+                        <h:inputText value="#{bonus.total}"></h:inputText>
+                    </h:column>
+
+                    <h:column>
+                        <h:commandLink value="Eliminar" actionListener="#{BeanDetallePlanilla.EliminarBonus(bonus)}" ></h:commandLink>
+                    </h:column>
+                </h:dataTable>
+
+                <h:commandButton class="button" value="Añadir nuevo bonus" actionListener="#{BeanDetallePlanilla.AnadirBonus()}"></h:commandButton>
+                <br></br>
+                <br></br>
+            </div>
+                  <!-- Lista Cobros -->
+            <div align="center" class="tablaMantenimiento">
+                <div align="center" class="tituloTabla">
+                    <h3>Bonuses:</h3>
+                </div>
+
+                <h:dataTable value="#{BeanDetallePlanilla.listaRebajos}" var="rebajo" class="dTableMantenimiento">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Detalle"></h:outputText>
+                        </f:facet>
+                        <h:inputText value="#{rebajo.detalle}"></h:inputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Total"></h:outputText>
+                        </f:facet>
+                        <h:inputText value="#{rebajo.total}"></h:inputText>
+                    </h:column>
+
+                    <h:column>
+                        <h:commandLink value="Eliminar" actionListener="#{BeanDetallePlanilla.EliminarRebajo(rebajo)}" ></h:commandLink>
+                    </h:column>
+                </h:dataTable>
+
+                <h:commandButton class="button" value="Añadir nuevo rebajo" actionListener="#{BeanDetallePlanilla.AnadirRebajo()}"></h:commandButton>
+                <br></br>
+                <br></br>
+            </div>
+            <br></br>
+        </h:form>
+    </body>
+</html>

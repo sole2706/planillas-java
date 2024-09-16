@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Editar Usuario</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/mantenimiento.css"></link>
+    </head>
+    <body>
+        <h:form>
+
+            <div align="center" class="tablaMantenimiento">
+                <div class="tituloTabla">
+                    <h3>Usuario:</h3>
+                </div>
+
+                <h:outputText class="textoLabel" value="Nombre:"></h:outputText>
+                <h:inputText class="textoInput" value="#{BeanUsuarios.usuario.nombre}"></h:inputText>
+                <br></br>
+                <br></br>
+
+                <h:outputText class="textoLabel" value="Rol:"></h:outputText>
+                <h:selectOneMenu value="#{BeanUsuarios.usuario.rol}">
+                    <f:selectItems value="#{BeanUsuarios.listaRoles}"/>
+                </h:selectOneMenu>
+                <br></br>
+                <br></br>
+
+                <h4>Cambiar contraseña:</h4>
+
+                <h:outputText class="textoLabel" value="Contraseña actual:"></h:outputText>
+                <h:inputSecret class="textoInput" value="#{BeanUsuarios.contraActual}"></h:inputSecret>
+                <br></br>
+                <br></br>
+                <h:outputText class="textoLabel" value="Contraseña nueva:"></h:outputText>
+                <h:inputSecret class="textoInput" value="#{BeanUsuarios.contraNueva}"></h:inputSecret>
+                <br></br>
+                <br></br>
+                <h:outputText class="textoLabel" value="Confirmar contraseña:"></h:outputText>
+                <h:inputSecret class="textoInput" value="#{BeanUsuarios.confirmaContra}"></h:inputSecret>
+                <br></br>
+                <br></br>
+                <h:outputText value="#{BeanUsuarios.mensaje}" style="color: red"></h:outputText>
+                <br></br>
+                <br></br>
+                <div class="center">
+                    <h:commandButton class="button" value="Guardar" actionListener="#{BeanUsuarios.Guardar()}"></h:commandButton>
+                    <h:commandButton class="button" value="Deshacer cambios" actionListener="#{BeanUsuarios.Deshacer()}"></h:commandButton>
+                    <h:commandButton class="button" value="Salir" actionListener="#{BeanUsuarios.Cancelar()}"></h:commandButton>
+                </div>
+            </div>
+        </h:form>
+    </body>
+</html>

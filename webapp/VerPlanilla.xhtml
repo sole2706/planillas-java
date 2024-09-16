@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Ver Planilla</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/mantenimiento.css"></link>
+    </head>
+    <body>
+        <h:form>
+
+            <div align="center" >
+                <button class="button"><a href="ListaPlanillas.xhtml">Regresar a Lista de Planillas</a></button>
+            </div>
+
+            <div align="center" class="tablaMantenimiento">
+
+                <div class="pablo">
+                    <h3>Detalle Planilla</h3>
+                </div>
+
+                <h:dataTable value="#{BeanPlanilla.listaDetallePlanilla}" var="detalle" class="tabla">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Empleado"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{detalle.empleado}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Horas Trabajadas"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{detalle.horasTrabajadas}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Salario Bruto"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{detalle.salarioBruto}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Horas Extra"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{detalle.horasExtra}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Salario Neto"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{detalle.salarioNeto}"></h:outputText>
+                    </h:column>
+                    <br/>
+                    <br/>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="✍"></h:outputText>
+                        </f:facet>
+                        <h:commandLink value="Editar" actionListener="#{BeanDetallePlanilla.EditarDetalle(detalle)}" ></h:commandLink>
+                    </h:column>
+                </h:dataTable>
+
+            </div>
+
+
+        </h:form>
+    </body>
+</html>
